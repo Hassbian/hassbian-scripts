@@ -12,7 +12,7 @@ function hassbian.info.version.hassbian_config.installed {
 function hassbian.info.version.hassbian_config.remote {
   # Return the remote version of hassbian-config.
   local version
-  version=$(curl -sSL https://raw.githubusercontent.com/home-assistant/hassbian-scripts/dev/package/DEBIAN/control | \
+  version=$(curl -sSL https://raw.githubusercontent.com/Hassbian/hassbian-scripts/dev/package/DEBIAN/control | \
     grep Version | awk -F' ' '{print $NF}')
   printf "%s" "$version"
 }
@@ -36,7 +36,7 @@ function hassbian.info.version.homeassistant.github {
   # Return the latest version of homeassistant from github.
   local version
 
-  version=$(curl -s https://api.github.com/repos/home-assistant/home-assistant/releases | \
+  version=$(curl -s https://api.github.com/repos/home-assistant/core/releases | \
     grep tag_name | head -1 | awk -F'"' '{print $4}')
 
   printf "%s" "$version"
@@ -46,7 +46,7 @@ function hassbian.info.version.homeassistant.pypi {
   # Return the latest version of homeassistant from pypi.
   local version
 
-  version=$(curl -s https://api.github.com/repos/home-assistant/home-assistant/releases/latest | \
+  version=$(curl -s https://api.github.com/repos/home-assistant/core/releases/latest | \
       grep tag_name | awk -F'"' '{print $4}')
 
   printf "%s" "$version"
